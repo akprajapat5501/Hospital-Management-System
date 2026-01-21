@@ -16,7 +16,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const { data } = await axios.get("http://localhost:4000/api/v1/user/doctors",
+        const { data } = await axios.get("https://hospital-management-system-backend-1lms.onrender.com/api/v1/user/doctors",
           { withCredentials: true });
         setDoctors(data.doctors)
       } catch (error) {
@@ -29,7 +29,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const { data } = await axios.get("http://localhost:4000/api/v1/appointment/getall",
+        const { data } = await axios.get("https://hospital-management-system-backend-1lms.onrender.com/api/v1/appointment/getall",
           { withCredentials: true });
         setAppointments(data.appointments)
       } catch (error) {
@@ -42,7 +42,7 @@ const Dashboard = () => {
 
   const handleUpdateStatus = async (appointmentId, status) => {
     try {
-      const { data } = await axios.put(`http://localhost:4000/api/v1/appointment/update/${appointmentId}`,
+      const { data } = await axios.put(`https://hospital-management-system-backend-1lms.onrender.com/api/v1/appointment/update/${appointmentId}`,
         { status },
         { withCredentials: true }
       );
