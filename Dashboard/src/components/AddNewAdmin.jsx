@@ -20,7 +20,7 @@ const AddNewAdmin = () => {
   const handleAddNewAdmin = async(e) =>{
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:4000/api/v1/user/admin/add", { firstName, lastName, email, phone, nic, dob, gender, password },
+      const response = await axios.post("https://hospital-management-system-backend-1lms.onrender.com/api/v1/user/admin/add", { firstName, lastName, email, phone, nic, dob, gender, password },
         { withCredentials: true,
           Headers: { "content-type": "application/json" }
         });
