@@ -14,7 +14,7 @@ const MessageForm = () => {
     e.preventDefault()
 
     try {
-      const res = await fetch("http://localhost:4000/api/v1/message/send", {
+      const res = await fetch("https://hospital-management-system-backend-1lms.onrender.com/api/v1/message/send", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({firstName, lastName, phone, email, message})
