@@ -1,3 +1,4 @@
+config({path: './config/config.env'});
 import { config } from 'dotenv';
 import express from 'express';
 import cors from 'cors';
@@ -10,10 +11,13 @@ import {errorMiddleware} from './middlewares/errorMiddleware.js';
 import appointmentRoute from './routes/appointmentRoute.js';
 const app = express();
 
-config({path: './config/config.env'});
+
 
 app.use(cors({
-    origin: [process.env.DASHBOARD_URL, process.env.FRONTEND_URL ],
+    origin: [
+        "http://localhost:5173", // Frontend
+      "http://localhost:5174", // Dashboard
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 }));
