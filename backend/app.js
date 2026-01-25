@@ -13,14 +13,23 @@ const app = express();
 
 
 
-app.use(cors({
-    origin: [
-        "http://localhost:5173", // Frontend
-      "http://localhost:5174", // Dashboard
-    ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Postman / server requests
+      if (!origin) return callback(null, true);
+
+      // allow any localhost port
+      if (origin.startsWith("http://localhost")) {
+        return callback(null, true);
+      }
+
+      callback(new Error("Not allowed by CORS"));
+    },
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-}));
+  })
+);
 
 app.use(cookieParser());
 app.use(express.json());
