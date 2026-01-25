@@ -15,21 +15,16 @@ const app = express();
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // Postman / server requests
-      if (!origin) return callback(null, true);
-
-      // allow any localhost port
-      if (origin.startsWith("http://localhost")) {
-        return callback(null, true);
-      }
-
-      callback(new Error("Not allowed by CORS"));
-    },
+    origin: [
+      "https://hospital-management-system-nu-three.vercel.app",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+
+// VERY IMPORTANT
+app.options("*", cors());
 
 app.use(cookieParser());
 app.use(express.json());
