@@ -11,8 +11,8 @@ import {errorMiddleware} from './middlewares/errorMiddleware.js';
 import appointmentRoute from './routes/appointmentRoute.js';
 const app = express();
 
-
-
+app.use(express.json());
+app.use(cookieParser());
 app.use(
   cors({
     origin: [
@@ -22,12 +22,11 @@ app.use(
     credentials: true,
   })
 );
-
 // VERY IMPORTANT
 app.options("*", cors());
 
-app.use(cookieParser());
-app.use(express.json());
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload({
     useTempFiles: true,
